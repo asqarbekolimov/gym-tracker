@@ -21,6 +21,7 @@ import { auth } from "@/firebase";
 import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import FillLoading from "../shared/fill-loading";
+import { useUserState } from "@/stores/user.store";
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -28,6 +29,7 @@ const Login = () => {
 
   const { setAuth } = useAuthState();
   const navigate = useNavigate();
+  const { setUser } = useUserState();
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -42,6 +44,7 @@ const Login = () => {
     setIsLoading(true);
     try {
       const res = await signInWithEmailAndPassword(auth, email, password);
+      setUser(res.user);
       navigate("/");
     } catch (error) {
       const result = error as Error;
