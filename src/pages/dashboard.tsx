@@ -46,7 +46,7 @@ const Dashboard = () => {
     if (!user) return null;
     return addDoc(collection(db, "tasks"), {
       title,
-      status: "unstared",
+      status: "unstarted",
       startTime: null,
       endTime: null,
       userId: user.uid,
@@ -116,6 +116,7 @@ const Dashboard = () => {
                         task={task}
                         onStartEditing={() => onStartEditing(task)}
                         onDelete={() => onDelete(task.id)}
+                        refetch={refetch}
                       />
                     ))}
 
