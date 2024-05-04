@@ -22,9 +22,11 @@ const Home = () => {
 
   return (
     <>
-      <div className="w-full h-screen flex items-center">
-        <div className="max-w-xl ml-60 flex h-full flex-col justify-center">
-          <h1 className="text-9xl font-semibold uppercase">Workout with me</h1>
+      <div className="w-full h-screen flex items-center px-8">
+        <div className="max-w-xl md:ml-60 flex h-full flex-col justify-center">
+          <h1 className="md:text-9xl text-4xl font-semibold uppercase">
+            Workout with me
+          </h1>
           <p className="text-muted-foreground">
             A huge selection of health and fitness content, healthy recipes and
             transformation stories to help you get fit and stay fit!
@@ -65,7 +67,7 @@ const Home = () => {
           </div>
         </div>
 
-        <img src={men} className="w-1/4" />
+        <img src={men} className="w-1/4 md:block hidden" />
       </div>
 
       <div className="container max-w-5xl mx-auto">
@@ -74,7 +76,7 @@ const Home = () => {
           Programs offer day-to-day guidance on an interactive calendar to keep
           you on track.
         </p>
-        <div className="grid grid-cols-3 gap-4 my-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
           {programs.map((item) => (
             <Card
               key={item.title}
